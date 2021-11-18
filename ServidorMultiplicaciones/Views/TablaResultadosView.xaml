@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="ServidorMultiplicaciones.Views.TablaResultadosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ServidorMultiplicaciones.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Pink">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0,5"/>
+            <Setter Property="FontFamily" Value="comic sans ms"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style> 
+    </UserControl.Resources>
+    <DockPanel Margin="15" >
+        <TextBlock Margin="0,0,0,5" DockPanel.Dock="Top" FontFamily="comic sans ms" Background="#008080"
+                   FontWeight="Bold" Foreground="White" TextWrapping="Wrap"
+                   FontSize="30" TextAlignment="Center"
+                  Padding="10" >Tabla de resultados</TextBlock>
+        <Button Command="{Binding IniciarCommand}" FontFamily="comic sans ms" Background="#FA8072" Padding="7" 
+                Foreground="White" FontSize="15" Width="200"
+                HorizontalAlignment="Right" BorderBrush="LawnGreen" BorderThickness="3"
+           DockPanel.Dock="Bottom">Jugar de nuevo</Button>
+        <Grid DockPanel.Dock="Top" Background="#DB7093">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>Nombre</TextBlock>
+            <TextBlock Grid.Column="1">Respuesta</TextBlock>
+            <TextBlock Grid.Column="2">Tiempo</TextBlock>
+            <TextBlock Grid.Column="3">Correcto</TextBlock>
+        </Grid>
+        <ListView ItemsSource="{Binding TablaResultados}" Margin="3" Background="#90EE90">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="750">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="18" TextAlignment="Center" Padding="0,5" FontFamily="comic sans ms" Background="#1000" FontWeight="DemiBold" Text="{Binding Nombre}"></TextBlock>
+                        <TextBlock FontSize="18" TextAlignment="Center" Padding="0,5" FontFamily="comic sans ms" Background="#1000" FontWeight="DemiBold" Text="{Binding Respuesta}" Foreground="Red" Grid.Column="1"></TextBlock>
+                        <TextBlock FontSize="18" TextAlignment="Center" Padding="0,5" FontFamily="comic sans ms" Background="#1000" FontWeight="DemiBold" Text="{Binding Tiempo}" Grid.Column="2"><TextBlock Text=" seg."></TextBlock></TextBlock>
+                        <TextBlock Visibility="Collapsed" x:Name="correcto" FontSize="18" TextAlignment="Center" Padding="0,5" FontFamily="comic sans ms" Background="#1000" FontWeight="DemiBold" Text="{Binding Correcto}" Grid.Column="3"></TextBlock>
+                        <TextBlock  FontSize="18" TextAlignment="Center" Padding="0,5" FontFamily="comic sans ms" Background="#1000" FontWeight="DemiBold"  Grid.Column="3">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Correcto}" Value="True">
+                                            <Setter Property="Text" Value="&#10003;"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Correcto}" Value="False">
+                                            <Setter Property="Text" Value="&#10060;"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </DockPanel>
+</UserControl>

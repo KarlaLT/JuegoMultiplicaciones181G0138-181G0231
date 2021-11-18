@@ -1,0 +1,17 @@
+﻿<Window x:Class="ServidorMultiplicaciones.Views.InicioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServidorMultiplicaciones.Views"
+        xmlns:mvvm="clr-namespace:ServidorMultiplicaciones.ViewModels"
+        mc:Ignorable="d"
+        Title="Aprendiendo a multiplicar" Height="450" Width="800" Background="SkyBlue">
+    <Window.DataContext>
+        <mvvm:ServidorViewModel></mvvm:ServidorViewModel>
+    </Window.DataContext>
+   
+    <ContentControl Content="{Binding Control}">
+
+    </ContentControl>
+</Window>

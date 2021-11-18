@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="ServidorMultiplicaciones.Views.RondaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ServidorMultiplicaciones.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Yellow">
+    <DockPanel Background="DarkCyan" Margin="10">
+
+        <TextBlock FontFamily="comic sans ms" Background="LawnGreen" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" FontSize="40" TextAlignment="Center"
+                  Padding="10"  DockPanel.Dock="Top">¿Cuál es el resultado de esta 
+        multiplicación?</TextBlock>
+        <TextBlock FontFamily="comic sans ms" Foreground="LawnGreen" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="10,10,30,10" 
+                   VerticalAlignment="Bottom" DockPanel.Dock="Bottom"
+                   FontSize="28">Tiempo:
+            
+        <Run Foreground="Yellow" Text="{Binding SegundosRestantes}"></Run>
+            <TextBlock Foreground="Yellow"> seg.</TextBlock>
+        </TextBlock>
+
+        <Grid Margin="0" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Margin="15,0" BorderBrush="Yellow" BorderThickness="5" CornerRadius="100"
+                    Width="150" Height="150" Background="Coral">
+                <TextBlock FontFamily="comic sans ms" Text="{Binding Num1}" VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="80" FontWeight="Bold"></TextBlock>
+            </Border>
+            <Border Margin="15,0" Grid.Column="2" BorderBrush="DarkBlue" BorderThickness="5" CornerRadius="100"
+                    Width="150" Height="150" Background="MediumOrchid">
+                <TextBlock FontFamily="comic sans ms" Text="{Binding Num2}" VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="80" FontWeight="Bold"></TextBlock>
+            </Border>
+            <Image Margin="15,0" Height="100" Grid.Column="1" Source="/Assets/mult.png"></Image>
+            <TextBlock Grid.Column="3"  FontSize="160" FontWeight="Bold" FontFamily="comic sans ms">=</TextBlock>
+            <Image Grid.Column="4" Source="/Assets/preg.png" Height="150"></Image>
+        </Grid>
+    </DockPanel>
+</UserControl>
